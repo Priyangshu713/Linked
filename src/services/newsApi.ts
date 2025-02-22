@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { NewsApiResponse, Article } from '../types';
 
 // Ensure API key is available
-const API_KEY = VITE_NEWS_API_KEY;
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 if (!API_KEY) {
   throw new Error('News API key is not configured. Please add VITE_NEWS_API_KEY to your environment variables.');
