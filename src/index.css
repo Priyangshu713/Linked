@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth transitions for dark mode */
+:root {
+  --transition-duration: 0.5s;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  transition: background-color var(--transition-duration) var(--transition-timing),
+    border-color var(--transition-duration) var(--transition-timing),
+    color var(--transition-duration) var(--transition-timing),
+    fill var(--transition-duration) var(--transition-timing),
+    stroke var(--transition-duration) var(--transition-timing),
+    opacity var(--transition-duration) var(--transition-timing),
+    box-shadow var(--transition-duration) var(--transition-timing),
+    transform var(--transition-duration) var(--transition-timing);
+}
+
+/* Prevent transition on page load */
+.no-transition {
+  transition: none !important;
+}
+
+/* Enhanced transitions for specific elements */
+.dark .animate-dark-mode,
+.animate-dark-mode {
+  transition: all var(--transition-duration) var(--transition-timing);
+}
+
+/* Smoother card transitions */
+.card {
+  transition: transform 0.3s var(--transition-timing),
+    box-shadow 0.3s var(--transition-timing),
+    background-color var(--transition-duration) var(--transition-timing);
+}
+
+/* Smooth text transitions */
+h1,
+h2,
+h3,
+p,
+span {
+  transition: color var(--transition-duration) var(--transition-timing),
+    opacity 0.3s var(--transition-timing);
+}
+
+/* Button transitions */
+button {
+  transition: all 0.3s var(--transition-timing);
+}
+
+/* Prevent transitions on images and videos */
+img,
+video {
+  transition: none;
+}
+
+/* Optional: Add fade effect for content */
+.fade-transition {
+  opacity: 1;
+  transition: opacity 0.5s var(--transition-timing);
+}
+
+.fade-transition.fade-out {
+  opacity: 0;
+}
+
+/* Enhanced hover effects */
+.hover-transform {
+  transition: transform 0.3s var(--transition-timing);
+}
+
+.hover-transform:hover {
+  transform: translateY(-2px);
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 dark:text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes morphSearch {
+  0% {
+    stroke-dashoffset: 0;
+    transform: rotate(0deg);
+  }
+
+  50% {
+    stroke-dashoffset: 100;
+    transform: rotate(180deg);
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    transform: rotate(360deg);
+  }
+}
+
+.animate-ripple {
+  animation: ripple 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-morph {
+  animation: morphSearch 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes fade {
+
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-fade {
+  animation: fade 2s ease-in-out infinite;
+}
+
+@keyframes ripple-slow {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-ripple-slow {
+  animation: ripple-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+
+.bg-grid-pattern {
+  background-size: 30px 30px;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
+
+.dark .bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(circle at center,
+      currentColor 1px,
+      transparent 1px);
+  background-size: 50px 50px;
+}
+
+.bg-minimal-grid {
+  background-image:
+    linear-gradient(to right, currentColor 1px, transparent 1px),
+    linear-gradient(to bottom, currentColor 1px, transparent 1px);
+  background-size: 50px 50px;
+}
